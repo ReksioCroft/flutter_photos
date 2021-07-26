@@ -13,7 +13,7 @@ class _PhotoPageState extends State<PhotoPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("dog photos"),
+        title: const Text('dog photos'),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
