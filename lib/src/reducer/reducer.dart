@@ -11,7 +11,8 @@ Reducer<AppState> reducer = combineReducers(<Reducer<AppState>>[
 ]);
 
 AppState _getPhotoSuccessful(AppState state, GetPhotoSuccessful action) {
-  return state.rebuild((b) {
-    b.photo = action.photo.toBuilder();
+  return state.rebuild((AppStateBuilder b) {
+    b.photos.clear();
+    b.photos.addAll(action.photos);
   });
 }

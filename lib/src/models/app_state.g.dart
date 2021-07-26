@@ -17,15 +17,13 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
   @override
   Iterable<Object?> serialize(Serializers serializers, AppState object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object?>[];
-    Object? value;
-    value = object.photo;
-    if (value != null) {
-      result
-        ..add('photo')
-        ..add(
-            serializers.serialize(value, specifiedType: const FullType(Photo)));
-    }
+    final result = <Object?>[
+      'photos',
+      serializers.serialize(object.photos,
+          specifiedType:
+              const FullType(BuiltList, const [const FullType(Photo)])),
+    ];
+
     return result;
   }
 
@@ -40,9 +38,11 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
       iterator.moveNext();
       final Object? value = iterator.current;
       switch (key) {
-        case 'photo':
-          result.photo.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Photo))! as Photo);
+        case 'photos':
+          result.photos.replace(serializers.deserialize(value,
+                  specifiedType:
+                      const FullType(BuiltList, const [const FullType(Photo)]))!
+              as BuiltList<Object?>);
           break;
       }
     }
@@ -53,12 +53,14 @@ class _$AppStateSerializer implements StructuredSerializer<AppState> {
 
 class _$AppState extends AppState {
   @override
-  final Photo? photo;
+  final BuiltList<Photo> photos;
 
   factory _$AppState([void Function(AppStateBuilder)? updates]) =>
       (new AppStateBuilder()..update(updates)).build();
 
-  _$AppState._({this.photo}) : super._();
+  _$AppState._({required this.photos}) : super._() {
+    BuiltValueNullFieldError.checkNotNull(photos, 'AppState', 'photos');
+  }
 
   @override
   AppState rebuild(void Function(AppStateBuilder) updates) =>
@@ -70,17 +72,17 @@ class _$AppState extends AppState {
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
-    return other is AppState && photo == other.photo;
+    return other is AppState && photos == other.photos;
   }
 
   @override
   int get hashCode {
-    return $jf($jc(0, photo.hashCode));
+    return $jf($jc(0, photos.hashCode));
   }
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('AppState')..add('photo', photo))
+    return (newBuiltValueToStringHelper('AppState')..add('photos', photos))
         .toString();
   }
 }
@@ -88,16 +90,16 @@ class _$AppState extends AppState {
 class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState? _$v;
 
-  PhotoBuilder? _photo;
-  PhotoBuilder get photo => _$this._photo ??= new PhotoBuilder();
-  set photo(PhotoBuilder? photo) => _$this._photo = photo;
+  ListBuilder<Photo>? _photos;
+  ListBuilder<Photo> get photos => _$this._photos ??= new ListBuilder<Photo>();
+  set photos(ListBuilder<Photo>? photos) => _$this._photos = photos;
 
   AppStateBuilder();
 
   AppStateBuilder get _$this {
     final $v = _$v;
     if ($v != null) {
-      _photo = $v.photo?.toBuilder();
+      _photos = $v.photos.toBuilder();
       _$v = null;
     }
     return this;
@@ -118,12 +120,12 @@ class AppStateBuilder implements Builder<AppState, AppStateBuilder> {
   _$AppState build() {
     _$AppState _$result;
     try {
-      _$result = _$v ?? new _$AppState._(photo: _photo?.build());
+      _$result = _$v ?? new _$AppState._(photos: photos.build());
     } catch (_) {
       late String _$failedField;
       try {
-        _$failedField = 'photo';
-        _photo?.build();
+        _$failedField = 'photos';
+        photos.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
             'AppState', _$failedField, e.toString());

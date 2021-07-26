@@ -3,6 +3,7 @@ import 'package:flutter_photos/src/actions/index.dart';
 import 'package:flutter_photos/src/data/photo_api.dart';
 import 'package:flutter_photos/src/epics/app_epics.dart';
 import 'package:flutter_photos/src/models/app_state.dart';
+import 'package:flutter_photos/src/presentation/photo_page.dart';
 import 'package:flutter_photos/src/reducer/reducer.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:http/http.dart';
@@ -37,12 +38,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StoreProvider(
+    return StoreProvider<AppState>(
       store: store,
       child: MaterialApp(
         title: 'Flutter Demo',
         theme: ThemeData.dark(),
-        home: const PhotoPage(),
+        home: PhotoPage(),
       ),
     );
   }

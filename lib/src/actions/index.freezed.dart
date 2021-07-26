@@ -20,9 +20,9 @@ class _$GetPhotoTearOff {
     return const GetPhotoStart();
   }
 
-  GetPhotoSuccessful successful(Photo photo) {
+  GetPhotoSuccessful successful(List<Photo> photos) {
     return GetPhotoSuccessful(
-      photo,
+      photos,
     );
   }
 
@@ -42,14 +42,14 @@ mixin _$GetPhoto {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Photo photo) successful,
+    required TResult Function(List<Photo> photos) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Photo photo)? successful,
+    TResult Function(List<Photo> photos)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$GetPhotoStart implements GetPhotoStart {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Photo photo) successful,
+    required TResult Function(List<Photo> photos) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return $default();
@@ -136,7 +136,7 @@ class _$GetPhotoStart implements GetPhotoStart {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Photo photo)? successful,
+    TResult Function(List<Photo> photos)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {
@@ -180,7 +180,7 @@ abstract class $GetPhotoSuccessfulCopyWith<$Res> {
   factory $GetPhotoSuccessfulCopyWith(
           GetPhotoSuccessful value, $Res Function(GetPhotoSuccessful) then) =
       _$GetPhotoSuccessfulCopyWithImpl<$Res>;
-  $Res call({Photo photo});
+  $Res call({List<Photo> photos});
 }
 
 /// @nodoc
@@ -196,13 +196,13 @@ class _$GetPhotoSuccessfulCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? photo = freezed,
+    Object? photos = freezed,
   }) {
     return _then(GetPhotoSuccessful(
-      photo == freezed
-          ? _value.photo
-          : photo // ignore: cast_nullable_to_non_nullable
-              as Photo,
+      photos == freezed
+          ? _value.photos
+          : photos // ignore: cast_nullable_to_non_nullable
+              as List<Photo>,
     ));
   }
 }
@@ -210,27 +210,27 @@ class _$GetPhotoSuccessfulCopyWithImpl<$Res>
 /// @nodoc
 
 class _$GetPhotoSuccessful implements GetPhotoSuccessful {
-  const _$GetPhotoSuccessful(this.photo);
+  const _$GetPhotoSuccessful(this.photos);
 
   @override
-  final Photo photo;
+  final List<Photo> photos;
 
   @override
   String toString() {
-    return 'GetPhoto.successful(photo: $photo)';
+    return 'GetPhoto.successful(photos: $photos)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is GetPhotoSuccessful &&
-            (identical(other.photo, photo) ||
-                const DeepCollectionEquality().equals(other.photo, photo)));
+            (identical(other.photos, photos) ||
+                const DeepCollectionEquality().equals(other.photos, photos)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(photo);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(photos);
 
   @JsonKey(ignore: true)
   @override
@@ -241,22 +241,22 @@ class _$GetPhotoSuccessful implements GetPhotoSuccessful {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Photo photo) successful,
+    required TResult Function(List<Photo> photos) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
-    return successful(photo);
+    return successful(photos);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Photo photo)? successful,
+    TResult Function(List<Photo> photos)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {
     if (successful != null) {
-      return successful(photo);
+      return successful(photos);
     }
     return orElse();
   }
@@ -287,9 +287,9 @@ class _$GetPhotoSuccessful implements GetPhotoSuccessful {
 }
 
 abstract class GetPhotoSuccessful implements GetPhoto {
-  const factory GetPhotoSuccessful(Photo photo) = _$GetPhotoSuccessful;
+  const factory GetPhotoSuccessful(List<Photo> photos) = _$GetPhotoSuccessful;
 
-  Photo get photo => throw _privateConstructorUsedError;
+  List<Photo> get photos => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   $GetPhotoSuccessfulCopyWith<GetPhotoSuccessful> get copyWith =>
       throw _privateConstructorUsedError;
@@ -373,7 +373,7 @@ class _$GetPhotoError implements GetPhotoError {
   @optionalTypeArgs
   TResult when<TResult extends Object?>(
     TResult Function() $default, {
-    required TResult Function(Photo photo) successful,
+    required TResult Function(List<Photo> photos) successful,
     required TResult Function(Object error, StackTrace stackTrace) error,
   }) {
     return error(this.error, stackTrace);
@@ -383,7 +383,7 @@ class _$GetPhotoError implements GetPhotoError {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>(
     TResult Function()? $default, {
-    TResult Function(Photo photo)? successful,
+    TResult Function(List<Photo> photos)? successful,
     TResult Function(Object error, StackTrace stackTrace)? error,
     required TResult orElse(),
   }) {

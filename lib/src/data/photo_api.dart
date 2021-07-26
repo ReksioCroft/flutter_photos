@@ -12,12 +12,13 @@ class PhotoApi {
   final Client _client;
   static int co = 0;
 
-  Future<Photo> getPhoto() async {
+  Future<List<Photo>> getPhotos() async {
     final Uri uri = Uri.parse(_apiUrl);
     final Response response = await _client.get(uri);
     if (response.statusCode >= 300) {
       throw StateError(response.body);
     }
-    return Photo.fromJson(jsonDecode(response.body)['results'][co++]['urls']['small']);
+    final List<dynamic> photoList = jsonDecode(response.body)['results'] as List<dynamic>;
+    return photoList.map((dynamic json) => Photo.fromJson(json['urls']['small'])).toList();
   }
 }
